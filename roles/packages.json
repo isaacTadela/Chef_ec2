@@ -1,0 +1,12 @@
+
+{
+  "name":"packages",
+  "override_attributes": {
+    "packages-cookbook": [
+  "nodejs", "npm", "awscli"
+]
+   },
+   "run_list": [
+     "recipe[packages]"
+   ]
+}
