@@ -50,26 +50,20 @@ else
   Chef::Log.warn('`node["packages"]` must be an Array or Hash.')
 end
 
-git '/opt/my_webapp/' do
-  repository 'https://github.com/isaacTadela/Unofficial-Chevrolet-Auto-shop.git'
-  revision 'master'
-  action :sync
-end
-
 execute 'download artifact' do
-  command 'aws s3api get-object --bucket unofficial-chevrolet-auto-shop-bucket --key Unofficial-Chevrolet-Auto-shop.tar.gz Unofficial-Chevro>  cwd '/'
+  command 'aws s3api get-object --bucket unofficial-chevrolet-auto-shop-bucket --key Unofficial-Chevrolet-Auto-shop.tar.gz Unofficial-Chevrolet-Auto-shop.tar.gz'
+  cwd '/home'
 end
 
 execute 'extract artifact' do
   command 'tar -xvzf Unofficial-Chevrolet-Auto-shop.tar.gz'
-  cwd '/'
+  cwd '/home'
 end
 
 execute 'npm install' do
-  cwd '/Unofficial-Chevrolet-Auto-shop/'
+  cwd '/home/Unofficial-Chevrolet-Auto-shop/'
 end
 
 execute 'npm start &' do
-  cwd '/Unofficial-Chevrolet-Auto-shop/'
+  cwd '/home/Unofficial-Chevrolet-Auto-shop/'
 end
-
