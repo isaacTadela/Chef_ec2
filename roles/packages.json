@@ -3,10 +3,10 @@
   "name":"packages",
   "override_attributes": {
     "packages-cookbook": [
-  "nodejs", "npm", "awscli"
+  "nodejs", "npm", "mysql-client-core-8.0"
 ]
    },
    "run_list": [
-     "recipe[packages]"
+     "recipe[packages]", "recipe[grafana]"
    ]
 }
