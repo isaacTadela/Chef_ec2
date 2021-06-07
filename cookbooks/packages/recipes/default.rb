@@ -56,8 +56,9 @@ bash 'extract_module' do
     aws s3api get-object --bucket unofficial-chevrolet-auto-shop-bucket --key Unofficial-Chevrolet-Auto-shop.tar.gz Unofficial-Chevrolet-Auto-shop.tar.gz
     tar -xvzf Unofficial-Chevrolet-Auto-shop.tar.gz
     rm Unofficial-Chevrolet-Auto-shop.tar.gz
-    cd Unofficial-Chevrolet-Auto-shop/
+    sudo mysql --host=$DB_DNS --port=$DB_PORT --user=$DB_USER --password=$DB_PASS < Unofficial-Chevrolet-Auto-shop/schema.sql
+	cd Unofficial-Chevrolet-Auto-shop/
     npm install
-    npm start &
+    node server.js &
   EOH
 end
